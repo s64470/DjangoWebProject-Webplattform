@@ -6,6 +6,7 @@
     <RootNamespace>DjangoWebProject-Webplattform</RootNamespace>
     <WebBrowserPort>8080</WebBrowserPort>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
