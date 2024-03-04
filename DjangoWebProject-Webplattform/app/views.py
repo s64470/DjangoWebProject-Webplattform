@@ -3,11 +3,12 @@ Definition of views.
 """
 
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpRequest
+from .forms import RegisterUserForm
 
 
 def home(request):
@@ -51,7 +52,19 @@ def about(request):
     )
 
 
-class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "app/register.html"
+def register_user(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = RegisterUserForm()
+    args = {'form': form}
+    return render(request, 'app/register.html', args)
+
+
+# class SignUpView(generic.CreateView):
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy("login")
+#     template_name = "app/register.html"
