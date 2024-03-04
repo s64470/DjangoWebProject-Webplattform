@@ -18,13 +18,13 @@ urlpatterns = [
          (
              template_name='app/login.html',
              authentication_form=forms.BootstrapAuthenticationForm,
-             extra_context=
-             {
+             extra_context={
                  'title': 'Log in',
-                 'year' : datetime.now().year,
+                 'year': datetime.now().year,
              }
          ),
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
+    path('signup/', views.SignUpView.as_view(), name='signup'),
 ]
