@@ -31,35 +31,23 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 class RegisterUserForm(UserCreationForm):
     """Registration form which uses boostrap CSS."""
     email = forms.EmailField(
-        widget=forms.TextInput(
-            {
-                'class': 'form-control',
-                'placeholder': 'your_email@provider.domain'
-            }))
+        widget=forms.EmailInput(
+            attrs={'class': 'form-control', 'placeholder': 'your_email@provider.domain'}))
 
     first_name = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
-            {
-                'class': 'form-control',
-                'placeholder': 'First name'
-            }))
+            attrs={'class': 'form-control', 'placeholder': 'First name'}))
 
     last_name = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
-            {
-                'class': 'form-control',
-                'placeholder': 'Last name'
-            }))
+            attrs={'class': 'form-control', 'placeholder': 'Last name'}))
 
     user_name = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
-            {
-                'class': 'form-control',
-                'placeholder': 'User name'
-            }))
+            attrs={'class': 'form-control', 'placeholder': 'User name'}))
 
     class Meta:
         model = User
@@ -71,3 +59,9 @@ class RegisterUserForm(UserCreationForm):
             'password1',
             'password2'
         )
+
+    def __init__(self, *args, **kwargs):
+        super(RegisterUserForm, self).__init__(*args, **kwargs)
+
+        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password2'].widget.attrs['class'] = 'form-control'
