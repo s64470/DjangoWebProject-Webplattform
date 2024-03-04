@@ -31,7 +31,13 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 
 class RegisterUserForm(UserCreationForm):
     """Registration form which uses boostrap CSS."""
-    email = forms.EmailField()
+    email = forms.EmailField(
+        widget=forms.TextInput(
+            {
+                'class': 'form-control',
+                'placeholder': 'your_email@provider.domain'
+            }))
+
     first_name = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
@@ -39,6 +45,7 @@ class RegisterUserForm(UserCreationForm):
                 'class': 'form-control',
                 'placeholder': 'First name'
             }))
+
     last_name = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
@@ -46,6 +53,7 @@ class RegisterUserForm(UserCreationForm):
                 'class': 'form-control',
                 'placeholder': 'Last name'
             }))
+
     user_name = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
