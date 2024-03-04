@@ -5,6 +5,8 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 from django.http import HttpRequest
 
 
@@ -49,12 +51,7 @@ def about(request):
     )
 
 
-def register_view(request):
-    """Renders the register page."""
-    form = UserCreationForm()
-    return render(
-        request, 'app/register.html',
-        {
-            'form': form
-        }
-    )
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "app/register.html"
