@@ -58,11 +58,12 @@
     <Folder Include="DjangoWebProject_Webplattform\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\bootstrap.css" />
+    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\content\custom.css" />
     <Content Include="app\templates\app\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
-    <Content Include="app\static\app\content\bootstrap.css" />
-    <Content Include="app\static\app\content\bootstrap.min.css" />
     <Content Include="app\static\app\content\site.css" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
